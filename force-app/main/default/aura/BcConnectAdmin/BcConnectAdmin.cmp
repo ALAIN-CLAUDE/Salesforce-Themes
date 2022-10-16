@@ -5,7 +5,7 @@
     <aura:attribute name="region" type="String"/>
     <aura:attribute name="env" type="String" default ="v2"/>
     <aura:attribute name="isOverride" type="boolean" default="false"/>
-    <aura:attribute name="inputValueLink" type="String" />
+    <aura:attribute name="inputValueLink" type="String" default="https://apps.babelforce.com/i/babelforce/babelconnect/v2" />
     <aura:attribute name="inputValueLink2" type="String" />
     <!-- task creation checkbox group related atributes -->
     <aura:attribute name="taskCreationOptions" type="List" default="[
@@ -47,7 +47,9 @@
                         <aura:if isTrue="{!v.isOverride}">
                             <lightning:input name="region" class="slds-p-top_medium" label="Development Region" value="{!v.inputValueLink2}" />
                             <aura:set attribute="else">
-                                <c:ComboBox inputValue="{!v.inputValueLink}" aura:id="comboComp"/><br/>
+                               <!--  <c:ComboBox inputValue="{!v.inputValueLink}" aura:id="comboComp"/><br/>-->
+                                
+                                 <lightning:input value="{!v.inputValueLink}" disabled='true'/>
                                 <lightning:layout>
                                     <lightning:layoutItem >
                                         <lightning:input name="input1" label="Update Environment " onchange="{!c.handleRegionChange}" value="{!v.region}" />

@@ -5,8 +5,7 @@
             if(response.getState() === 'SUCCESS'){
                 var results = response.getReturnValue();
                 component.set("v.config",results);
-                var comboComp = component.find('comboComp');
-                comboComp.sampleMethod(component.get("v.config.Region"));
+              
                 //use the existing selected options to decide values for all available options on admin page.
                 let selectedTaskOptions = component.get("v.taskCreationValues");
                 if(results.CreateTaskForInboundCall){
