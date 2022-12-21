@@ -20,10 +20,9 @@
             
         }else if(newEvent.event == 'babelconnect.cti.call'){
             //whenever an inbound or outbound call is made using babbleconnect CTI.
-            
-            if(newEvent.context.mostRecentUrl == lastUrl){
+            //if(newEvent.context.mostRecentUrl == lastUrl){
             	this.handleSoftPhoneCall(component,newEvent);
-            }
+           // }
         }
     },
     
@@ -149,7 +148,7 @@
     },
     
     callApextoCreateTask : function(component, callInfo){
-		
+		debugger;
         console.log('apexmethodcalled');
         $A.getCallback(function() {
             var createTaskAction = component.get("c.createNewTask");
@@ -183,7 +182,7 @@
     
     //this method will get the contact or lead id using apex, when create a task option is not selected.
     callApextogetParentRecord : function(component, callInfo){
-        
+        debugger;
         let clientNumber = callInfo.type == 'inbound' ? callInfo.from : callInfo.to ;
         $A.getCallback(function() {
             var findRecordAction = component.get("c.findSobjectRecords");

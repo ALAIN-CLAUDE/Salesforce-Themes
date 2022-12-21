@@ -8,13 +8,12 @@
     <aura:attribute name="maxRecords" type="Integer" default="10"/>
     <aura:attribute name="recordId" type="String" />
     <aura:attribute name="openAccountPopup" type="Boolean" default="false" />
-     <aura:handler name="init" value="{!this}" action="{!c.doInt}"></aura:handler>
     <aura:method name="sampleMethod" action="{!c.doAction}" description="Sample method with parameters"/> 
     <!-- Attributes specific to component-->
     <aura:attribute name="results" type="List" default="[
-                                                        {'label': 'https://apps.babelforce.com/i/babelforce/babelconnect/v2', 'value': 'https://apps.babelforce.com/i/babelforce/babelconnect/v2'},
-                                                        {'label': 'https://apps.us-east.babelforce.com/i/babelforce/babelconnect/v2', 'value': 'https://apps.babelforce.com/i/babelforce/babelconnect/v2'},
-                                                        {'label': 'https://apps.ap-southeast.babelforce.com/i/babelforce/babelconnect/v2', 'value': 'https://apps.babelforce.com/i/babelforce/babelconnect/v2'},
+    {'label': 'https://apps.babelforce.com/babelconnect', 'value': 'https://apps.babelforce.com/babelconnect'},
+    {'label': 'https://apps.us-east.babelforce.com/babelconnect', 'value': 'https://apps.us-east.babelforce.com/babelconnect'},
+    {'label': 'https://apps.ap-southeast.babelforce.com/babelconnect', 'value': 'https://apps.ap-southeast.babelforce.com/babelconnect'},
     ]"/>
     <aura:attribute name="openDropDown" type="Boolean" default="false" />
     <aura:attribute name="selectedOption" type="String" />
@@ -44,11 +43,11 @@
                         <input type="text"
                                class="slds-input slds-combobox__input slds-combobox__input-value"
                                id="combobox-id-21" aria-autocomplete="list" aria-controls="listbox-id-11"
-                               autoComplete="off" onclick="{!c.searchHandler}" role="textbox" 
-                               value="{!v.inputValue}" aura:id="comboboxComp" onchange="{!c.searchString}" disabled="{!!empty(v.selectedOption)}"/>                       
+                               autoComplete="off" onclick="{!c.searchHandler}" role="textbox" placeholder="Select Region"
+                               value="{!v.inputValue}" aura:id="comboboxComp" onchange="{!c.searchString}" style="{! empty(v.selectedOption)? 'padding-left: 100px;':'pointer-events: none;'}"/>                       
                         <aura:if isTrue="{! empty(v.selectedOption)}">
                             <span class="slds-icon_container slds-input__icon_right slds-icon-utility-search slds-input__icon">
-                                <lightning:formattedText value=".babelforce.com/i/babelforce/babelconnect/v2"  style="margin-left: -250px;"/>
+                                <lightning:formattedText value=".babelforce.com/babelconnect/#/app"  style="margin-left: -215px;"/>
                             </span>
                             <aura:set attribute="else">
                                 <button class="slds-button slds-button_icon slds-input__icon slds-input__icon_right"

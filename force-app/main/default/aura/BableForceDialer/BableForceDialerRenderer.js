@@ -1,7 +1,8 @@
 ({
     afterRender: function (component, helper) {
          this.superAfterRender();
-         var region = '';
+         var config = component.get("v.config");
+        var region =(config)?config.Region:'';
           var action = component.get("c.getBcConnectConfigs");
             action.setCallback(this, function(response){
                 if(response.getState() === 'SUCCESS'){

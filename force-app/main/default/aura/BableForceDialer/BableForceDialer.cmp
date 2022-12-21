@@ -9,6 +9,6 @@
     <aura:attribute name="config" type="object"/>
     <aura:attribute name="lasturl" type="string"/>
     <aura:attribute name ="mostrecenturl" type="string" default=""/>
-    <iframe aura:id="vfFrame" src="{!v.ifameUrlWithRegion}"  height="600" width="304"/> 
+    <iframe aura:id="vfFrame" src="{!v.ifameUrlWithRegion}"/> 
     <!-- <button class="slds-button" onclick="{!c.demomethod}">demo</button> -->
 </aura:component>

@@ -1,12 +1,8 @@
 ({	
-    doInt : function (component, event, helper) {
-        component.set("v.selectedOption",  component.get("v.inputValue"));
-    },
     doAction : function (component, event, helper) {
         var params = event.getParam('arguments');
         if(params!='' && params!=null){
             component.set("v.inputValue", params);
-            //component.set("v.openDropDown", false);
             component.set("v.selectedOption", params);
         }     
     },
@@ -16,11 +12,6 @@
     },
     searchString : function (component, event, helper) {
         var searchString = 'https://apps.'+event.target.value+'.babelforce.com/babelconnect/#/app';
-        console.log(searchString);
-        //https://apps.us-east.babelforce.com/babelconnect/#/app
-        /*if(searchString.indexOf('') > -0){
-                                              
-        }*/
         component.set("v.inputValue", searchString);
         component.set("v.selectedOption", searchString);
     },
@@ -36,7 +27,7 @@
     },
     
     clearOption : function (component, event, helper) {
-        //component.set("v.results", []);
+      
         component.set("v.openDropDown", false);
         component.set("v.inputValue", "");
         component.set("v.selectedOption", "");

@@ -29,32 +29,13 @@
                 }
                 component.set("v.clickToDialValue",selectedClickToDialOption);
                 component.set("v.inputValueLink",component.get("v.config.Region"));
-                
-                let inputValueLink =  component.get("v.inputValueLink");
-                let region =  component.get("v.region");  
-                inputValueLink=  inputValueLink.split('.');
-                if(inputValueLink.length>1){
-                    if(inputValueLink.length==3){
-                        region = '';
+
                     }
-                    else{
-                        region = inputValueLink[1];
-                    }
-                }
-                component.set("v.region",region);  
-                component.get("v.env",'v2')
-                if( component.get("v.inputValueLink").includes('v1'))
-                    component.set("v.env",'v1')
-                
-                    
-            }
             
         });
         
         $A.enqueueAction(action);
-        
-        
-        
+
         var workspaceAPI = component.find("workspace");
         workspaceAPI.getAllTabInfo().then(function(response) {
             console.log('opened tab size == '+response.length);
@@ -71,32 +52,6 @@
             console.log(error);
         });
     },
-    handleEnvChange: function(component, event, helper) {
-         let inputValueLink =  component.get("v.inputValueLink");
-         let env =  component.get("v.env");  
-         inputValueLink=  inputValueLink.split('/');
-        inputValueLink[inputValueLink.length-1]=env;
-         component.set("v.inputValueLink",inputValueLink.join('/'));
-        
-    },
-    handleRegionChange: function(component, event, helper) {
-        let inputValueLink =  component.get("v.inputValueLink");
-        let region =  component.get("v.region");  
-        inputValueLink=  inputValueLink.split('.');
-        if(inputValueLink.length>1){
-            if(inputValueLink.length==3){
-                inputValueLink[0] =inputValueLink[0] +'.'+region;
-            }
-            else{
-                inputValueLink[1] =region;
-            }
-            inputValueLink = inputValueLink.join('.');
-            inputValueLink =  inputValueLink.replace('..','.')
-            component.set("v.inputValueLink",inputValueLink);
-        }
-    },
-    
-    
     onTabCreated : function(component, event, helper) {
         var workspaceAPI = component.find("workspace");
         workspaceAPI.getAllTabInfo().then(function(response) {
@@ -119,26 +74,10 @@
     updateConfigs : function(component, event, helper){
         
         var regionval = component.get("v.inputValueLink");
-        if(component.get("v.isOverride"))
-        {
-            regionval = component.get("v.inputValueLink2");
-             component.set("v.config.Development_Mode__c",component.get("v.isOverride"));
-         }
-        
-         if(regionval!='' && regionval!=null){
-            component.set("v.config.Region",regionval);
-         }
-        
-        
-        component.set("v.config.Development_Mode__c",component.get("v.isOverride"));
-       
+      
         var configs= component.get('v.config');
         
-        var regionInput = component.find('regionInput');
-        console.log('configs==>'+regionInput);
-        if(regionInput.get('v.value')){
-            configs.Region = regionInput.get('v.value');
-        }
+        configs.Region = regionval;
         
         var leadNameInput = component.find('leadNameInput');
         if(leadNameInput.get('v.value')){
@@ -168,8 +107,6 @@
                 configs.OpenDialerAndPrefillOutboundNumber = true;
             }
         }
-        
-        console.log(configs);
         
         let action = component.get('c.updateBcConnectConfigs');
         

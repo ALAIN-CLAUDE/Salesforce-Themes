@@ -3,10 +3,8 @@
     <aura:handler name="init" value="{!this}" action="{!c.doInt}"></aura:handler>
     <aura:attribute name="config" type="object"/>
     <aura:attribute name="region" type="String"/>
-    <aura:attribute name="env" type="String" default ="v2"/>
-    <aura:attribute name="isOverride" type="boolean" default="false"/>
-    <aura:attribute name="inputValueLink" type="String" default="https://apps.babelforce.com/i/babelforce/babelconnect/v2" />
-    <aura:attribute name="inputValueLink2" type="String" />
+    <aura:attribute name="inputValueLink" type="String" default="https://apps.babelforce.com/babelconnect" />
+    <aura:attribute name="defaultUrl" type="String" default="https://apps.{}.babelforce.com/babelconnect"/>
     <!-- task creation checkbox group related atributes -->
     <aura:attribute name="taskCreationOptions" type="List" default="[
                                                                     {'label': 'Auto create new contact/lead upon inbound/outbound call', 'value': 'CreateLeadForNewCall'},
@@ -39,37 +37,10 @@
                 
                 <div aria-hidden="false" class="slds-section__content slds-p-around_large">
                     <div class="slds-form">
-                        <!-- Combobox Region-->
-                        
-                        <aura:if isTrue="{!v.config.isSandbox}">
-                            <lightning:input type="checkbox" class="slds-p-bottom_small" label="Development Mode" value="{!v.isOverride}" checked="{!v.isOverride}" name="input1"/>
-                        </aura:if>
-                        <aura:if isTrue="{!v.isOverride}">
-                            <lightning:input name="region" class="slds-p-top_medium" label="Development Region" value="{!v.inputValueLink2}" />
-                            <aura:set attribute="else">
-                               <!--  <c:ComboBox inputValue="{!v.inputValueLink}" aura:id="comboComp"/><br/>-->
-                                
-                                 <lightning:input value="{!v.inputValueLink}" disabled='true'/>
-                                <lightning:layout>
-                                    <lightning:layoutItem >
-                                        <lightning:input name="input1" label="Update Environment " onchange="{!c.handleRegionChange}" value="{!v.region}" />
-                                    </lightning:layoutItem>
-                                    <lightning:layoutItem >
-                                        <lightning:select class="slds-p-left_medium" value="{!v.env}" name="select version" label="Select Version" onchange="{! c.handleEnvChange }">
-                                            <option value="v2">v2</option>
-                                            <option value="v1">v1</option>
-                                            
-                                        </lightning:select>
-                                    </lightning:layoutItem>
-                                    <lightning:layoutItem >
-                                    </lightning:layoutItem>
-                                </lightning:layout>
-                                
-                            </aura:set>
-                        </aura:if>
-                        
-                        
-                        <lightning:input aura:id="regionInput" name="input1" variant="label-hidden" value="{!v.config.Region}" class="slds-hide"/>
+   					<div class="slds-form-element slds-form-element_stacked">
+                        <lightning:input value="{!v.inputValueLink}" label="Environment" />
+				   </div>
+                        <lightning:input aura:id="regionInput" name="input1"  variant="label-hidden" value="{!v.config.Region}" class="slds-hide"/>
                         <!-- End ComboBox Region -->
                         
                         <div class="slds-form-element slds-form-element_stacked">
