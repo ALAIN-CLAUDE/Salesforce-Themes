@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>currency__c</fullName>
+    <externalId>false</externalId>
+    <label>Currency</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>GBP</fullName>
+                <default>false</default>
+                <label>GBP</label>
+            </value>
+            <value>
+                <fullName>CAD</fullName>
+                <default>false</default>
+                <label>CAD</label>
+            </value>
+            <value>
+                <fullName>AUD</fullName>
+                <default>false</default>
+                <label>AUD</label>
+            </value>
+            <value>
+                <fullName>CHF</fullName>
+                <default>false</default>
+                <label>CHF</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>
