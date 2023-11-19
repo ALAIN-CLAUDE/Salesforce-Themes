@@ -122,34 +122,6 @@
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>
     </layoutSections>
-    <layoutSections>
-        <customLabel>false</customLabel>
-        <detailHeading>true</detailHeading>
-        <editHeading>false</editHeading>
-        <label>Custom Links</label>
-        <layoutColumns>
-            <layoutItems>
-                <customLink>GoogleSearch</customLink>
-            </layoutItems>
-            <layoutItems>
-                <customLink>GoogleNews</customLink>
-            </layoutItems>
-        </layoutColumns>
-        <layoutColumns>
-            <layoutItems>
-                <customLink>GoogleMaps</customLink>
-            </layoutItems>
-            <layoutItems>
-                <customLink>HooversProfile</customLink>
-            </layoutItems>
-        </layoutColumns>
-        <layoutColumns>
-            <layoutItems>
-                <customLink>SendGmail</customLink>
-            </layoutItems>
-        </layoutColumns>
-        <style>CustomLinks</style>
-    </layoutSections>
     <quickActionList>
         <quickActionListItems>
             <quickActionName>FeedItem.TextPost</quickActionName>
